@@ -1,29 +1,29 @@
 import base64
 import csv
 
+dayList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+mainDict = {}
+
 def encodeB64(originalStr):
   stringBytes = originalStr.encode("ascii")
   base64Bytes = base64.b64encode(stringBytes)
   base64String = base64Bytes.decode("ascii")
   return base64String
 
-dayList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-mainDict = {}
+def setDictionary():
+  for item in dayList:
+    classList = []
+    classNum = int(input("Number of buildings on " + str(item) + ": "))
+
+    for i in range(classNum):
+      classList.append(input("Enter building " + str(i + 1) + " for " + str(item) + ": "))
+
+    mainDict[item] = classList
 
 mainDict["user"] = [input("Access ID: ")]
-
 mainDict["pass"] = [encodeB64(input("Password: "))]
-
 mainDict["phone"] = [input("Phone Number: ")]
-
-for item in dayList:
-  classList = []
-  classNum = int(input("Number of buildings on " + str(item) + ": "))
-
-  for i in range(classNum):
-    classList.append(input("Enter building " + str(i + 1) + " for " + str(item) + ": "))
-
-  mainDict[item] = classList
+setDictionary()
 
 file = open("screenerData.csv", "w")
 csvFile = csv.writer(file)
