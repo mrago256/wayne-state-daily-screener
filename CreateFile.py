@@ -4,6 +4,7 @@ import csv
 dayList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 mainDict = {}
 
+# converting user password to base64 to avoid storing in plaintext
 def encodeB64(originalStr):
   stringBytes = originalStr.encode("ascii")
   base64Bytes = base64.b64encode(stringBytes)
@@ -11,14 +12,23 @@ def encodeB64(originalStr):
   return base64String
 
 def setDictionary():
-  for item in dayList:
+  print("\nPress [Enter] after each building")
+  print("Press [Enter] on blank space to advance the day")
+  for day in dayList:
     classList = []
-    classNum = int(input("Number of buildings on " + str(item) + ": "))
+    userDone = False
 
-    for i in range(classNum):
-      classList.append(input("Enter building " + str(i + 1) + " for " + str(item) + ": "))
+    while not userDone:
+      building = input("Enter building for " + str(day) + ": ")
 
-    mainDict[item] = classList
+      if building != "":
+        classList.append(building)
+
+      else:
+        userDone = True
+
+    mainDict[day] = classList
+
 
 mainDict["user"] = [input("Access ID: ")]
 mainDict["pass"] = [encodeB64(input("Password: "))]
@@ -28,26 +38,24 @@ setDictionary()
 file = open("screenerData.csv", "w")
 csvFile = csv.writer(file)
 
-for item in mainDict:
-  i = 0
-  # put building check here
+for key in mainDict:
 
-  file.write(item)
+  # TODO: put building check here
 
-  if mainDict[item]:
+  file.write(key)
+
+  if mainDict[key]:
     file.write(",")
 
-  for value in mainDict[item]:
+  for value in mainDict[key]:
     if "," in value:
       print("\nPlease check building name and try again")
       file.close
       exit()
 
-    i += 1
-
     file.write(str(value))
 
-    if i != len(mainDict[item]):
+    if mainDict[key].index(value) != len(mainDict[key]) - 1:
       file.write(",")
 
   file.write("\n")
