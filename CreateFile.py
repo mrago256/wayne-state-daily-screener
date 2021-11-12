@@ -1,6 +1,9 @@
 import base64
 import csv
+from fuzzywuzzy import process
 
+# using a list for testing purposes. Might change it if too unoptimized
+buildingList = []
 dayList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 mainDict = {}
 
@@ -10,6 +13,23 @@ def encodeB64(originalStr):
   base64Bytes = base64.b64encode(stringBytes)
   base64String = base64Bytes.decode("ascii")
   return base64String
+
+def getResult(building):
+  result = process.extractOne(building, buildingList)
+
+  if result[1] >= 75:
+    return result[0]
+
+  else:
+    return False
+
+def loadBuildings():
+  buildingFile = open("buildingList.txt", "r")
+
+  for line in buildingFile:
+    buildingList.append(line[:-1])
+
+  buildingFile.close()
 
 def setDictionary():
   print("\nPress [Enter] after each building")
@@ -22,7 +42,14 @@ def setDictionary():
       building = input("Enter building for " + str(day) + ": ")
 
       if building != "":
-        classList.append(building)
+
+        if getResult(building):
+          building = getResult(building)
+          classList.append(building)
+
+        else:
+          print("That building doesn't exist. Please be more clear")
+
 
       else:
         userDone = True
@@ -33,6 +60,7 @@ def setDictionary():
 mainDict["user"] = [input("Access ID: ")]
 mainDict["pass"] = [encodeB64(input("Password: "))]
 mainDict["phone"] = [input("Phone Number: ")]
+loadBuildings()
 setDictionary()
 
 file = open("screenerData.csv", "w")
@@ -48,6 +76,15 @@ for key in mainDict:
     file.write(",")
 
   for value in mainDict[key]:
+    # if key != "user" and key != "pass" and key != "phone":
+    #   if getResult(value):
+    #     value = getResult(value)
+
+    #   else:
+    #     print("No close building match for", value + ". Please try again")
+    #     file.close()
+    #     exit()
+
     if "," in value:
       print("\nPlease check building name and try again")
       file.close
