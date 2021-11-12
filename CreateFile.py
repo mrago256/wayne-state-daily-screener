@@ -50,7 +50,6 @@ def setDictionary():
         else:
           print("That building doesn't exist. Please be more clear")
 
-
       else:
         userDone = True
 
@@ -68,25 +67,14 @@ csvFile = csv.writer(file)
 
 for key in mainDict:
 
-  # TODO: put building check here
-
   file.write(key)
 
   if mainDict[key]:
     file.write(",")
 
   for value in mainDict[key]:
-    # if key != "user" and key != "pass" and key != "phone":
-    #   if getResult(value):
-    #     value = getResult(value)
-
-    #   else:
-    #     print("No close building match for", value + ". Please try again")
-    #     file.close()
-    #     exit()
-
     if "," in value:
-      print("\nPlease check building name and try again")
+      print("\nRerun script and remove commas from credentials")
       file.close
       exit()
 
