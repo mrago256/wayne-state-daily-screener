@@ -28,9 +28,14 @@ def readFile():
 
 mainDict = {}
 dayOfWeek = datetime.datetime.today().strftime('%A')
-dayOfWeek = "Tuesday"
 
 readFile()
+
+# quit if there are no buildings
+try:
+  mainDict[dayOfWeek]
+except KeyError:
+  exit()
 
 mainDict["pass"] = decodeB64(mainDict["pass"][0])
 
@@ -59,7 +64,7 @@ passwd.send_keys(Keys.RETURN)
 phoneBox = driver.find_element_by_name("f_253006")
 phoneBox.send_keys(mainDict["phone"])
 
-# add current duildings
+# add current buildings
 buildingSearch = driver.find_element_by_class_name("select2-search__field")
 
 for item in mainDict[dayOfWeek]:
