@@ -45,14 +45,14 @@ def setDictionary():
       if building != "":
 
         if getResult(building):
-          building = getResult(building)
-          classList.append(building)
+          classList.append(getResult(building))
 
         else:
           print("That building doesn't exist. Please be more clear")
 
       else:
         userDone = True
+
     classList.sort()
     mainDict[day] = classList
 
@@ -67,7 +67,6 @@ file = open("screenerData.csv", "w")
 csvFile = csv.writer(file)
 
 for key in mainDict:
-
   file.write(key)
 
   if mainDict[key]:
