@@ -48,7 +48,7 @@ def setDictionary():
           classList.append(getResult(building))
 
         else:
-          print("That building doesn't exist. Please be more clear")
+          print("That building doesn't exist. Please try again")
 
       else:
         userDone = True
