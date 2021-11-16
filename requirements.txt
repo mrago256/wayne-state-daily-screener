@@ -1,1 +1,3 @@
 fuzzywuzzy
+selenium
+python-Levenshtein
