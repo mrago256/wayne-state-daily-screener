@@ -17,6 +17,7 @@ def encodeB64(originalStr):
 def getResult(building):
   result = process.extractOne(building, buildingList)
 
+  # using the rlevance to determine if correct approximation
   if result[1] >= 75:
     return result[0]
 
@@ -52,7 +53,7 @@ def setDictionary():
 
       else:
         userDone = True
-
+    classList.sort()
     mainDict[day] = classList
 
 
