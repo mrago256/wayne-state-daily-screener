@@ -31,7 +31,11 @@ Make sure the driver file is in the same directory as AutoScreener.py.
 
     $ pip install fuzzywuzzy
 
-Note: If the error Install python-Levenshtein to remove this warning appears at runtime:
+Note: If the warning
+```
+Install python-Levenshtein to remove this warning
+```
+appears at runtime:
 
     $ pip install python-Levenshtein
 
