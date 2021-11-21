@@ -31,11 +31,11 @@ Make sure the driver file is in the same directory as AutoScreener.py.
 
     $ pip install fuzzywuzzy
 
-Note:If the error Install python-Levenshtein to remove this warning appears at runtime:
+Note: If the error Install python-Levenshtein to remove this warning appears at runtime:
 
     $ pip install python-Levenshtein
 
-and run the rile again
+and run AutoScreener.py again
 
 ### Create user file
 
@@ -50,7 +50,7 @@ CreateFile.py only needs to be run if buildings change.
 
     $ AutoScreener.py
 
-This is the script which loads the screener and inputs informaton. Add it to
+This is the script which loads the screener and inputs information. Add it to
 computer autorun directory for full automation. It is recommended to run this
 manually at least once to check for errors.
 
