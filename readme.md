@@ -25,7 +25,7 @@ of the Selenium documentation. Driver file must match browser version.
 
 [Firefox](https://github.com/mozilla/geckodriver/releases)
 
-Make sure the file driver file is in the same directory as AutoScreener.py.
+Make sure the driver file is in the same directory as AutoScreener.py.
 
 ### Install FuzzyWuzzy using:
 
