@@ -12,22 +12,80 @@ to notify the university of these changes.
 
 ## Setup
 
-Install Selenium using:
+### Install Selenium using:
 
     $ pip install selenium
 
-Make sure the file "chromedriver" is in the same directory as the rest of the files.
+#### Driver files:
 
-Install FuzzyWuzzy using:
+Refer to [Section 1.5](https://selenium-python.readthedocs.io/installation.html#drivers)
+of the Selenium documentation. Driver file must match browser version.
+
+[Chrome](https://sites.google.com/chromium.org/driver/downloads)
+
+[Firefox](https://github.com/mozilla/geckodriver/releases)
+
+Make sure the file driver file is in the same directory as AutoScreener.py.
+
+### Install FuzzyWuzzy using:
 
     $ pip install fuzzywuzzy
 
-Note: If the error Install python-Levenshtein to remove this warning appears at runtime,
-run:
+Note:If the error Install python-Levenshtein to remove this warning appears at runtime:
 
     $ pip install python-Levenshtein
 
 and run the rile again
+
+### Create user file
+
+    $ python3 CreateFile.py
+
+This asks for user login information and buildings that
+will be entered. The password is obfuscated for *some* level of security.
+
+CreateFile.py only needs to be run if buildings change.
+
+### Fill out screener
+
+    $ AutoScreener.py
+
+This is the script which loads the screener and inputs informaton. Add it to
+computer autorun directory for full automation. It is recommended to run this
+manually at least once to check for errors.
+
+## Runtime Errors
+
+### CreateFile.py
+
+```
+Rerun script and remove commas from credentials
+```
+
+This occurs when the user inputs commas in either their username, password, or
+phone number.
+
+### AutoScreener.py
+
+```
+The data file does not exist. Try running CreateFile.py first
+```
+Make sure that CreateFile.py has been run and the screenerData.csv file is in the
+same directory as AutoScreener.py
+
+```
+Driver file not found. Please refer to readme
+```
+Verify the driver file is in the same directory as AutoScreener.py
+
+This error also occurs if the browser version does not match the driver version.
+
+```
+Building error. Rerun CreateFile.py
+```
+
+This error occurs if the screenerData file somehow gets edited externally.
+Re-running CreateFile.py should fix it.
 
 ## Libraries
 
