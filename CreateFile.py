@@ -1,5 +1,6 @@
 import base64
 import csv
+import getpass
 from fuzzywuzzy import process
 
 # using a list for testing purposes. Might change it if too unoptimized
@@ -58,7 +59,7 @@ def setDictionary():
 
 
 mainDict["user"] = [input("Access ID: ")]
-mainDict["pass"] = [encodeB64(input("Password: "))]
+mainDict["pass"] = [encodeB64(getpass.getpass("Password: "))]
 mainDict["phone"] = [input("Phone Number: ")]
 loadBuildings()
 setDictionary()
