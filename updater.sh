@@ -1,11 +1,12 @@
 #!/bin/sh
 
+echo Updating...
+
 version=`google-chrome --version | cut -d ' ' -f3`
-echo $version
 
-wget -N https://chromedriver.storage.googleapis.com/$version/chromedriver_linux64.zip
+wget -N -q https://chromedriver.storage.googleapis.com/$version/chromedriver_linux64.zip
 
-unzip -o *.zip
+unzip -o -q *.zip
 
 rm *.zip
 
