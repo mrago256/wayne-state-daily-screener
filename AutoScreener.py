@@ -1,6 +1,7 @@
 import base64
 import csv
 import datetime
+import os
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -46,8 +47,15 @@ chrome_options.add_argument("--headless")
 try:
   driver = webdriver.Chrome("./chromedriver", options=chrome_options)
 except selenium.common.exceptions.WebDriverException:
-  print("Driver file not found. Please refer to readme")
-  exit()
+  print("Driver file not found. Attempting update...")
+  os.system("./updater.sh")
+
+  try:
+    driver = webdriver.Chrome("./chromedriver", options=chrome_options)
+    print("Update Successful")
+  except selenium.common.exceptions.WebDriverException:
+    print("chromedriver updated; Error still presists. Refer to readme")
+    exit()
 
 driver.get("https://forms.wayne.edu/covid-19-screening")
 

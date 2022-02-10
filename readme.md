@@ -10,6 +10,8 @@ out the daily screener everyday without user input. It should be used at your
 own risk, and if some health issue comes up, fill out the daily screener manually
 to notify the university of these changes.
 
+Note: Some features only work on linux at this time (Auto update of chromedriver)
+
 ## Setup
 
 ### Install Selenium using:
@@ -17,6 +19,8 @@ to notify the university of these changes.
     $ pip install selenium
 
 #### Driver files:
+
+Note: This step can be omitted if host system is running linux
 
 Refer to [Section 1.5](https://selenium-python.readthedocs.io/installation.html#drivers)
 of the Selenium documentation. Driver file must match browser version.
