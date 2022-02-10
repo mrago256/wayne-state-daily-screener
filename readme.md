@@ -10,6 +10,8 @@ out the daily screener everyday without user input. It should be used at your
 own risk, and if some health issue comes up, fill out the daily screener manually
 to notify the university of these changes.
 
+Note: Some features only work on linux at this time (Auto update of chromedriver)
+
 ## Setup
 
 ### Install Selenium using:
