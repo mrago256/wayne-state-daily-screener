@@ -20,6 +20,8 @@ Note: Some features only work on linux at this time (Auto update of chromedriver
 
 #### Driver files:
 
+Note: This step can be omitted if host system is running linux
+
 Refer to [Section 1.5](https://selenium-python.readthedocs.io/installation.html#drivers)
 of the Selenium documentation. Driver file must match browser version.
 
