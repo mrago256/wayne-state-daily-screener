@@ -42,7 +42,7 @@ mainDict["pass"] = decodeB64(mainDict["pass"][0])
 
 # make it run headlessly
 chrome_options = Options()
-# chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 
 try:
   driver = webdriver.Chrome("./chromedriver", options=chrome_options)
@@ -93,6 +93,6 @@ driver.find_element_by_id("f_251742_no").click()
 driver.find_element_by_id("f_255927_no").click()
 
 # click submit
-# driver.find_element_by_id("formy-button").click()
+driver.find_element_by_id("formy-button").click()
 
-# driver.close()
+driver.close()
