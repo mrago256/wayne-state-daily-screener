@@ -1,7 +1,6 @@
 import base64
 import csv
 import datetime
-from gettext import find
 import os
 import selenium
 from selenium import webdriver
@@ -106,6 +105,6 @@ driver.find_element(By.ID, "f_251742_no").click()
 driver.find_element(By.ID, "f_255927_no").click()
 
 # click submit
-driver.find_element(By.ID, "formy-button").click()
+# driver.find_element(By.ID, "formy-button").click()
 
 driver.close()
