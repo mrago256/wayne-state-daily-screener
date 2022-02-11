@@ -6,6 +6,7 @@ import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+from notification import sendNotif
 
 def decodeB64(encodedStr):
   base64Bytes = encodedStr.encode("ascii")
@@ -17,7 +18,9 @@ def readFile():
   try:
     file = open("screenerData.csv", "r")
   except FileNotFoundError:
-    print("The data file does not exist. Try running CreateFile.py first")
+    errMessage = "The data file does not exist. Try running CreateFile.py first"
+    print(errMessage)
+    sendNotif("The data file does not exist. Try running CreateFile.py first")
     exit()
 
   csvFile = csv.reader(file)
@@ -47,14 +50,18 @@ chrome_options.add_argument("--headless")
 try:
   driver = webdriver.Chrome("./chromedriver", options=chrome_options)
 except selenium.common.exceptions.WebDriverException:
-  print("Driver file not found. Attempting update...")
+  errMessage = "Driver file not found. Attempting update..."
+  print(errMessage)
+  sendNotif(errMessage)
   os.system("./updater.sh")
 
   try:
     driver = webdriver.Chrome("./chromedriver", options=chrome_options)
     print("Update Successful")
   except selenium.common.exceptions.WebDriverException:
-    print("chromedriver updated; Error still presists. Refer to readme")
+    errMessage = "chromedriver updated; Error still presists. Refer to readme"
+    print(errMessage)
+    sendNotif(errMessage)
     exit()
 
 driver.get("https://forms.wayne.edu/covid-19-screening")
@@ -83,7 +90,9 @@ for item in mainDict[dayOfWeek]:
     driver.find_element_by_class_name("select2-results__options").click()
 
   else:
-    print("Building error. Rerun CreateFile.py")
+    errMessage = "Building error. Rerun CreateFile.py"
+    print(errMessage)
+    sendNotif(errMessage)
     driver.close()
     exit()
 
@@ -93,6 +102,6 @@ driver.find_element_by_id("f_251742_no").click()
 driver.find_element_by_id("f_255927_no").click()
 
 # click submit
-driver.find_element_by_id("formy-button").click()
+# driver.find_element_by_id("formy-button").click()
 
 driver.close()
