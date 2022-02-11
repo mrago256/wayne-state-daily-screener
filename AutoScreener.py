@@ -102,6 +102,6 @@ driver.find_element_by_id("f_251742_no").click()
 driver.find_element_by_id("f_255927_no").click()
 
 # click submit
-# driver.find_element_by_id("formy-button").click()
+driver.find_element_by_id("formy-button").click()
 
 driver.close()
