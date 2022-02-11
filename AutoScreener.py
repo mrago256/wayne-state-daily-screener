@@ -1,11 +1,14 @@
 import base64
 import csv
 import datetime
+from gettext import find
 import os
 import selenium
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from notification import sendNotif
 
 def decodeB64(encodedStr):
@@ -48,7 +51,8 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 
 try:
-  driver = webdriver.Chrome("./chromedriver", options=chrome_options)
+  ser = Service("./chromedriver")
+  driver = webdriver.Chrome(service=ser, options=chrome_options)
 except selenium.common.exceptions.WebDriverException:
   errMessage = "Driver file not found. Attempting update..."
   print(errMessage)
@@ -56,7 +60,7 @@ except selenium.common.exceptions.WebDriverException:
   os.system("./updater.sh")
 
   try:
-    driver = webdriver.Chrome("./chromedriver", options=chrome_options)
+    driver = webdriver.Chrome(service=ser, options=chrome_options)
     print("Update Successful")
   except selenium.common.exceptions.WebDriverException:
     errMessage = "chromedriver updated; Error still presists. Refer to readme"
@@ -67,8 +71,8 @@ except selenium.common.exceptions.WebDriverException:
 driver.get("https://forms.wayne.edu/covid-19-screening")
 
 # log into screener
-accessID = driver.find_element_by_name("accessid")
-passwd = driver.find_element_by_name("passwd")
+accessID = driver.find_element(By.NAME, "accessid")
+passwd = driver.find_element(By.NAME, "passwd")
 accessID.clear()
 passwd.clear()
 accessID.send_keys(mainDict["user"])
@@ -76,18 +80,18 @@ passwd.send_keys(mainDict["pass"])
 passwd.send_keys(Keys.RETURN)
 
 # input phone number
-phoneBox = driver.find_element_by_name("f_253006")
+phoneBox = driver.find_element(By.NAME, "f_253006")
 phoneBox.send_keys(mainDict["phone"])
 
 # add current buildings
-buildingSearch = driver.find_element_by_class_name("select2-search__field")
+buildingSearch = driver.find_element(By.CLASS_NAME, "select2-search__field")
 
 for item in mainDict[dayOfWeek]:
   buildingSearch.send_keys(item)
-  searchText = driver.find_element_by_class_name("select2-results__options").text
+  searchText = driver.find_element(By.CLASS_NAME, "select2-results__options").text
 
   if searchText != "No results found":
-    driver.find_element_by_class_name("select2-results__options").click()
+    driver.find_element(By.CLASS_NAME, "select2-results__options").click()
 
   else:
     errMessage = "Building error. Rerun CreateFile.py"
@@ -97,11 +101,11 @@ for item in mainDict[dayOfWeek]:
     exit()
 
 # click no on all boxes
-driver.find_element_by_id("f_251741_no").click()
-driver.find_element_by_id("f_251742_no").click()
-driver.find_element_by_id("f_255927_no").click()
+driver.find_element(By.ID, "f_251741_no").click()
+driver.find_element(By.ID, "f_251742_no").click()
+driver.find_element(By.ID, "f_255927_no").click()
 
 # click submit
-driver.find_element_by_id("formy-button").click()
+driver.find_element(By.ID, "formy-button").click()
 
 driver.close()
