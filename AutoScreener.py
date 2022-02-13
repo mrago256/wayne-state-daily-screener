@@ -10,6 +10,25 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
+def checkDate():
+  currentDate = datetime.date.today()
+
+  try:
+    file = open("lastRun.txt", "r")
+  except:
+    os.system("touch lastRun.txt")
+    file = open("lastRun.txt", "r")
+
+  if file.readline() == str(currentDate):
+    file.close()
+    exit()
+
+  file = open("lastRun.txt", "w")
+  file.write(str(currentDate))
+  file.close()
+
+  return currentDate.strftime('%A')
+
 def decodeB64(encodedStr):
   base64Bytes = encodedStr.encode("ascii")
   stringBytes = base64.b64decode(base64Bytes)
@@ -33,7 +52,7 @@ def readFile():
   file.close()
 
 mainDict = {}
-dayOfWeek = datetime.datetime.today().strftime('%A')
+dayOfWeek = checkDate()
 
 readFile()
 
@@ -107,6 +126,6 @@ driver.find_element(By.ID, "f_251742_no").click()
 driver.find_element(By.ID, "f_255927_no").click()
 
 # click submit
-driver.find_element(By.ID, "formy-button").click()
+# driver.find_element(By.ID, "formy-button").click()
 
 driver.close()
