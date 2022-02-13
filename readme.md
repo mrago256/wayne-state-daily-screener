@@ -10,7 +10,7 @@ out the daily screener everyday without user input. It should be used at your
 own risk, and if some health issue comes up, fill out the daily screener manually
 to notify the university of these changes.
 
-Note: This only works on Linux at the moment. Windows support is being developed
+Note: This only works on Linux currently. Windows support is being developed
 
 ## Setup
 
@@ -30,8 +30,8 @@ of the Selenium documentation. Driver file must match browser version.
 
 Make sure the driver file is in the same directory as AutoScreener.py.
 
-The Autoscreener only works with Google Chrome, so Chrome must be installed
-in order for the script to work.
+The Autoscreener only works with Google Chrome. Google Chrome must be installed
+for it to function.
 
 ### Create user file
 
