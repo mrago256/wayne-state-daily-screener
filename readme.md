@@ -14,8 +14,10 @@ Note: This only works on Linux at the moment. Windows support is being developed
 
 ## Setup
 
-### From main folder, install python dependencies using:
+### Install python dependencies using:
     $ pip install -r requirements.txt
+
+from the main folder
 
 ### Driver files:
 
