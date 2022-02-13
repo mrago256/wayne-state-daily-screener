@@ -36,7 +36,7 @@ in order for the script to work.
     $ python3 CreateFile.py
 
 This asks for user login information and buildings that
-will be entered. The password is obfuscated for *some* level of security but it is
+will be entered. The university ID password is obfuscated for *some* level of security but it is
 **not** encrypted.
 
 CreateFile.py only needs to be run if buildings change.
