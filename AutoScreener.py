@@ -1,6 +1,7 @@
 import base64
 import csv
 import datetime
+from notification import sendNotif
 import os
 import selenium
 from selenium import webdriver
@@ -8,7 +9,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from notification import sendNotif
 
 def decodeB64(encodedStr):
   base64Bytes = encodedStr.encode("ascii")
@@ -22,7 +22,7 @@ def readFile():
   except FileNotFoundError:
     errMessage = "The data file does not exist. Try running CreateFile.py first"
     print(errMessage)
-    sendNotif("The data file does not exist. Try running CreateFile.py first")
+    sendNotif(errMessage)
     exit()
 
   csvFile = csv.reader(file)
@@ -60,7 +60,9 @@ except selenium.common.exceptions.WebDriverException:
 
   try:
     driver = webdriver.Chrome(service=ser, options=chrome_options)
-    print("Update Successful")
+    errMessage = "Update Successful"
+    print(errMessage)
+    sendNotif(errMessage)
   except selenium.common.exceptions.WebDriverException:
     errMessage = "chromedriver updated; Error still presists. Refer to readme"
     print(errMessage)
