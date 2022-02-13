@@ -14,43 +14,30 @@ Note: This only works on Linux at the moment. Windows support is being developed
 
 ## Setup
 
-### Install Selenium using:
+### From main folder, install python dependencies using:
+    $ pip install -r requirements.txt
 
-    $ pip install selenium
-
-#### Driver files:
+### Driver files:
 
 Note: This step can be omitted if host system is running linux
 
 Refer to [Section 1.5](https://selenium-python.readthedocs.io/installation.html#drivers)
 of the Selenium documentation. Driver file must match browser version.
 
-[Chrome](https://sites.google.com/chromium.org/driver/downloads)
+[Chrome Driver Link](https://sites.google.com/chromium.org/driver/downloads)
 
 Make sure the driver file is in the same directory as AutoScreener.py.
 
-Currently, the autoscreener only works with Google Chrome
-
-### Install FuzzyWuzzy using:
-
-    $ pip install fuzzywuzzy
-
-Note: If the warning
-```
-Install python-Levenshtein to remove this warning
-```
-appears at runtime:
-
-    $ pip install python-Levenshtein
-
-and run AutoScreener.py again
+The Autoscreener only works with Google Chrome, so Chrome must be installed
+in order for the script to work.
 
 ### Create user file
 
     $ python3 CreateFile.py
 
 This asks for user login information and buildings that
-will be entered. The password is obfuscated for *some* level of security.
+will be entered. The password is obfuscated for *some* level of security but it is
+**not** encrypted.
 
 CreateFile.py only needs to be run if buildings change.
 
