@@ -14,6 +14,13 @@ Note: This only works on Linux currently. Windows support is being developed
 
 ## Setup
 
+### Automatic Install:
+
+    $ chmod +x Linux-Installer.sh
+    $ ./Linux-Installer.sh
+This will prompt for the type of install or to uninstall and all other setup
+steps can be omitted.
+
 ### Install python dependencies:
 
     $ pip install -r requirements.txt
