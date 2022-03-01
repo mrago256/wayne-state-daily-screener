@@ -14,7 +14,8 @@ Note: This only works on Linux currently. Windows support is being developed
 
 ## Setup
 
-### Install python dependencies using:
+### Install python dependencies:
+
     $ pip install -r requirements.txt
 
 from the main folder
