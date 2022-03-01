@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=bash -c "cd ~/.local/share/screener && python3 AutoScreener.py"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Daily Screener
+Name=Daily Screener
+Comment[en_US]=Automatically fills out the daily screener
+Comment=Automatically fills out the daily screener
