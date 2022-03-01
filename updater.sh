@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo Updating...
+echo "Updating..."
 
 version=`google-chrome --version | cut -d ' ' -f3`
 
@@ -10,4 +10,4 @@ unzip -o -q *.zip
 
 rm *.zip
 
-echo ChromeDriver version successfully matched with chrome version: $version
+echo "ChromeDriver version successfully matched with chrome version: $version"
