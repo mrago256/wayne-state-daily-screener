@@ -99,3 +99,6 @@ Fuzzy string matching is managed by the FuzzyWuzzy python module.
 
 Documentation for the library can be found [here](https://pypi.org/project/fuzzywuzzy/).
 
+## License
+
+[MIT License](https://opensource.org/licenses/mit-license.html)
