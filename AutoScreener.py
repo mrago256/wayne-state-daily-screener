@@ -99,8 +99,14 @@ passwd.send_keys(mainDict["pass"])
 passwd.send_keys(Keys.RETURN)
 
 # input phone number
-phoneBox = driver.find_element(By.NAME, "f_253006")
-phoneBox.send_keys(mainDict["phone"])
+try:
+  phoneBox = driver.find_element(By.NAME, "f_253006")
+  phoneBox.send_keys(mainDict["phone"])
+except selenium.common.exceptions.NoSuchElementException:
+  errMessage = "User credentials incorrect."
+  print(errMessage)
+  sendNotif(errMessage)
+  exit()
 
 # add current buildings
 buildingSearch = driver.find_element(By.CLASS_NAME, "select2-search__field")
