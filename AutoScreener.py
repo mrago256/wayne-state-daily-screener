@@ -15,13 +15,12 @@ def checkDate():
 
   try:
     file = open("lastRun.txt", "r")
-  except:
-    os.system("touch lastRun.txt")
-    file = open("lastRun.txt", "r")
 
-  if file.readline() == str(currentDate):
-    file.close()
-    exit()
+    if file.readline() == str(currentDate):
+      file.close()
+      exit()
+  except IOError:
+    pass
 
   file = open("lastRun.txt", "w")
   file.write(str(currentDate))
@@ -126,6 +125,7 @@ driver.find_element(By.ID, "f_251742_no").click()
 driver.find_element(By.ID, "f_255927_no").click()
 
 # click submit
-# driver.find_element(By.ID, "formy-button").click()
+driver.find_element(By.ID, "formy-button").click()
 
 driver.close()
+os.system("logger \"Autoscreener-Successful\"")
