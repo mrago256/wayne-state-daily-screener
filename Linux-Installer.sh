@@ -21,7 +21,9 @@ then
   echo "Installing..."
   pip install -q -r requirements.txt
 
+  rm -r ~/.local/share/screener
   (mkdir $screenerDirectory && cp AutoScreener.py $screenerDirectory \
+  && cp updater.sh $screenerDirectory && cp notification.py $screenerDirectory \
   && cp screener.desktop ~/.config/autostart/) || (clear \
   && echo "Installation failed: screener.desktop file missing" && exit)
 
@@ -32,6 +34,7 @@ then
   (cp screenerData.csv $screenerDirectory) || (clear \
   && echo "Installation failed: screenerData.csv file missing" && exit)
 
+  clear
   echo "Screener successfully set up and installed"
   exit
 
