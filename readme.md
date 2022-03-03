@@ -14,6 +14,14 @@ Note: This only works on Linux currently. Windows support is being developed
 
 ## Setup
 
+### Prerequisites:
+
+In order to run this program, you msut have python 3 and pip installed
+
+Install pip (Linux):
+
+    $ sudo apt install pip
+
 ### Automatic Install:
 
     $ chmod +x Linux-Installer.sh
