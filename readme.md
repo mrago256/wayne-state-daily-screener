@@ -10,15 +10,15 @@ out the daily screener everyday without user input. It should be used at your
 own risk, and if some health issue comes up, fill out the daily screener manually
 to notify the university of these changes.
 
-Note: This only works on Linux currently. Windows support is being developed
+Note: This only works on Linux currently. Windows support is being developed.
 
 ## Setup
 
 ### Prerequisites:
 
-In order to run this program, you msut have python 3 and pip installed
+In order to run this program, you msut have python 3 and pip installed.
 
-Install pip (Linux):
+(Linux) Install pip:
 
     $ sudo apt install pip
 
@@ -28,6 +28,11 @@ Install pip (Linux):
     $ ./Linux-Installer.sh
 This will prompt for the type of install or to uninstall and all other setup
 steps can be omitted.
+
+### Manual Install:
+
+Follow these steps to install the autoscreener manually. It is recommended
+to use the installer.
 
 ### Install python dependencies:
 
