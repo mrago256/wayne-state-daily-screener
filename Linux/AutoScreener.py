@@ -106,6 +106,7 @@ except selenium.common.exceptions.NoSuchElementException:
   errMessage = "User credentials incorrect."
   print(errMessage)
   sendNotif(errMessage)
+  driver.close()
   exit()
 
 # add current buildings

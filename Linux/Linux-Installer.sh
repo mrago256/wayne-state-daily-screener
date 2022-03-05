@@ -1,38 +1,32 @@
 #!/bin/bash
 
-if [[ $OS.TYPE == "win32" ]]
-then
-  echo "This is the wrong script. Run Windows-Installer instead"
-  exit
-fi
-
-echo "What whould you like to do?
-1. Set up script to run on computer startup (recommended)
-2. Install dependencies; Don't set up autorun
-3. Disable/Uninstall autorun"
+echo "What would you like to do?"
+echo "1. Set up script to run on computer startup (recommended)"
+echo "2. Install dependencies; Don't set up autorun"
+echo "3. Disable/Uninstall autoscreener"
 
 read choice
 
 if [ $choice == "1" ]
 then
-  screenerDirectory=~/.local/share/screener
   clear
-
+  screenerDirectory=~/.local/share/screener
   echo "Installing..."
-  pip install -q -r requirements.txt
 
-  rm -r ~/.local/share/screener
-  (mkdir $screenerDirectory && cp AutoScreener.py $screenerDirectory \
-  && cp updater.sh $screenerDirectory && cp notification.py $screenerDirectory \
-  && cp screener.desktop ~/.config/autostart/) || (clear \
-  && echo "Installation failed: screener.desktop file missing" && exit)
+  pip install -q -r requirements.txt
 
   clear
   echo "Running CreateFile.py..."
   python3 CreateFile.py
+  clear
 
-  (cp screenerData.csv $screenerDirectory) || (clear \
-  && echo "Installation failed: screenerData.csv file missing" && exit)
+  rm -r $screenerDirectory
+  mkdir $screenerDirectory
+  cp AutoScreener.py $screenerDirectory || clear && echo "Installation failed: Autoscreener.py missing" && exit
+  cp notification.py $screenerDirectory || clear && echo "Installation failed: notification.py missing" && exit
+  cp updater.sh $screenerDirectory || clear && echo "Installation failed: updater.sh missing" && exit
+  cp screener.desktop ~/.config/autostart/ || clear && echo "Installation failed: screener.desktop missing" && exit
+  cp screenerData.csv $screenerDirectory || clear && echo "Installation failed: screenerData.csv file missing" && exit
 
   clear
   echo "Screener successfully set up and installed"
@@ -41,8 +35,8 @@ then
 elif [ $choice == "2" ]
 then
   clear
-
   echo "Installing..."
+
   pip install -q -r requirements.txt
   clear
 
@@ -61,15 +55,14 @@ then
 elif [ $choice == "3" ]
 then
   clear
-
   echo "Uninstalling..."
-  # pip uninstall -q -r requirements.txt
+
+  pip uninstall -q -y -r requirements.txt
   rm ~/.config/autostart/screener.desktop
   rm -r ~/.local/share/screener
   clear
 
-  echo "Uninstall successful. AutoScreener.py can still be run manually"
-  exit
+  echo "Uninstall successful"
 
 else
   echo "Invalid Choice"
