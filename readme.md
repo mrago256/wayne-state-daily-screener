@@ -10,8 +10,6 @@ out the daily screener everyday without user input. It should be used at your
 own risk, and if some health issue comes up, fill out the daily screener manually
 to notify the university of these changes.
 
-Note: This only works on Linux currently. Windows support is being developed.
-
 ## Setup
 
 ### Prerequisites:
