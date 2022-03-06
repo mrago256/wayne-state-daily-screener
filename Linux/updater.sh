@@ -10,4 +10,4 @@ unzip -o -q *.zip
 
 rm *.zip
 
-echo "ChromeDriver version successfully matched with chrome version: $version"
+echo "Chromedriver version successfully matched with Chrome version: $version"

@@ -103,10 +103,11 @@ try:
   phoneBox = driver.find_element(By.NAME, "f_253006")
   phoneBox.send_keys(mainDict["phone"])
 except selenium.common.exceptions.NoSuchElementException:
-  errMessage = "User credentials incorrect."
+  errMessage = "User credentials incorrect"
   print(errMessage)
   sendNotif(errMessage)
   driver.close()
+  driver.quit()
   exit()
 
 # add current buildings
@@ -124,6 +125,7 @@ for item in mainDict[dayOfWeek]:
     print(errMessage)
     sendNotif(errMessage)
     driver.close()
+    driver.quit()
     exit()
 
 # click no on all boxes
@@ -135,4 +137,5 @@ driver.find_element(By.ID, "f_255927_no").click()
 driver.find_element(By.ID, "formy-button").click()
 
 driver.close()
+driver.quit()
 os.system("logger \"Autoscreener-Successful\"")
