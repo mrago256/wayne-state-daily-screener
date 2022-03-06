@@ -22,11 +22,11 @@ then
 
   rm -r $screenerDirectory
   mkdir $screenerDirectory
-  cp AutoScreener.py $screenerDirectory || clear && echo "Installation failed: Autoscreener.py missing" && exit
-  cp notification.py $screenerDirectory || clear && echo "Installation failed: notification.py missing" && exit
-  cp updater.sh $screenerDirectory || clear && echo "Installation failed: updater.sh missing" && exit
-  cp screenerData.csv $screenerDirectory || clear && echo "Installation failed: screenerData.csv file missing" && exit
-  cp screener.desktop ~/.config/autostart/ || clear && echo "Installation failed: screener.desktop missing" && exit
+  cp AutoScreener.py $screenerDirectory || (clear && echo "Installation failed: Autoscreener.py missing" && exit)
+  cp notification.py $screenerDirectory || (clear && echo "Installation failed: notification.py missing" && exit)
+  cp updater.sh $screenerDirectory || (clear && echo "Installation failed: updater.sh missing" && exit)
+  cp screenerData.csv $screenerDirectory || (clear && echo "Installation failed: screenerData.csv file missing" && exit)
+  cp screener.desktop ~/.config/autostart/ || (clear && echo "Installation failed: screener.desktop missing" && exit)
 
   clear
   echo "Screener successfully set up and installed"
