@@ -16,20 +16,35 @@ Note: This only works on Linux currently. Windows support is being developed.
 
 ### Prerequisites:
 
-In order to run this program, you msut have python 3 and pip installed.
+In order to run this program, you msut have Python 3 and pip installed.
 
-(Linux) Install pip:
+Note: When installing python on Windows, make sure to check option to add
+Python to PATH.
 
-    $ sudo apt install pip
+The installer will warn the user and not proceed if this condition is not met.
 
 ### Automatic Install:
 
-    $ chmod +x Linux-Installer.sh
-    $ ./Linux-Installer.sh
-This will prompt for the type of install or to uninstall and all other setup
-steps can be omitted.
+#### Windows:
 
-### Manual Install:
+Run **Windows-Installer.bat** and choose install type.
+
+Note: When installing and running CreateFily.py the following warning will appear:
+
+```
+UserWarning: Using slow pure-python SequenceMatcher. Install python-Levenshtein to remove this warning
+```
+
+This is fine.
+
+#### Linux:
+
+    $ ./Linux-Installer.sh
+
+This will prompt for the type of install or to uninstall. It will also run the
+CreateFile.py script.
+
+### Manual Install for Linux:
 
 Follow these steps to install the autoscreener manually. It is recommended
 to use the installer.
@@ -109,15 +124,21 @@ Re-running CreateFile.py should fix it.
 
 ### Browser Automation
 
-Browser automation is managed by the Selenium python module.
+Browser automation is managed by the selenium python module.
 
 Documentation for the library can be found [here](https://pypi.org/project/selenium/).
 
 ### Fuzzy String Matching
 
-Fuzzy string matching is managed by the FuzzyWuzzy python module.
+Fuzzy string matching is managed by the fuzzywuzzy python module.
 
 Documentation for the library can be found [here](https://pypi.org/project/fuzzywuzzy/).
+
+### Windows Toast
+
+Windows toast notifications are handled by the win10toast python module.
+
+Documentation for the library can be found [here](https://pypi.org/project/win10toast/).
 
 ## License
 
