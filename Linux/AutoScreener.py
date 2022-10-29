@@ -82,7 +82,7 @@ except selenium.common.exceptions.WebDriverException:
     print(errMessage)
     sendNotif(errMessage)
   except selenium.common.exceptions.WebDriverException:
-    errMessage = "chromedriver updated; Error still presists. Refer to readme"
+    errMessage = "Chromedriver updated; Error still presists. Refer to readme"
     print(errMessage)
     sendNotif(errMessage)
     exit()
@@ -130,7 +130,6 @@ for item in mainDict[dayOfWeek]:
 
 # click no on all boxes
 driver.find_element(By.ID, "f_251741_no").click()
-driver.find_element(By.ID, "f_251742_no").click()
 driver.find_element(By.ID, "f_255927_no").click()
 
 # click submit

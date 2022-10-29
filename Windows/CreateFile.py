@@ -3,7 +3,6 @@ import csv
 import getpass
 from fuzzywuzzy import process
 
-# using a list for testing purposes. Might change it if too unoptimized
 buildingList = []
 dayList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 mainDict = {}
