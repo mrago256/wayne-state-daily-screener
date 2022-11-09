@@ -2,12 +2,16 @@
 
 echo "Updating..."
 
-version=`google-chrome --version | cut -d ' ' -f3`
+version=`curl https://chromedriver.storage.googleapis.com/LATEST_RELEASE`
 
-wget -N -q https://chromedriver.storage.googleapis.com/$version/chromedriver_linux64.zip
+wget -N -q https://chromedriver.storage.googleapis.com/$version/chromedriver_linux64.zip &&
 
-unzip -o -q *.zip
+unzip -o -q *.zip &&
 
-rm *.zip
+rm *.zip &&
 
-echo "Chromedriver version successfully matched with Chrome version: $version"
+echo "Chromedriver version successfully matched with Chrome version: $version" &&
+
+exit
+
+echo "Chromedriver failed to install"
